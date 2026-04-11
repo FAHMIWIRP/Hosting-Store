@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harga Paket — NexaHost</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            primary: '#2563eb',
+            primaryLight: '#dbeafe',
+            primaryDark: '#1d4ed8',
+            accent: '#22c55e',
+            accentLight: '#dcfce7',
+            surface: '#f8fafc',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background: #f8fafc; }
+    h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .navbar-glass {
+      background: rgba(248,250,252,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(37,99,235,0.08);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #f0fdf4 100%);
+    }
+
+    .popular-glow {
+      box-shadow: 0 0 0 2px #2563eb, 0 20px 60px rgba(37,99,235,0.18);
+    }
+
+    .wa-btn { background: #22c55e; transition: all 0.2s; }
+    .wa-btn:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,197,94,0.35); }
+
+    .footer-bg { background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%); }
+
+    .noise { position: relative; }
+    .noise::before {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+    }
+
+    .cta-gradient { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%); }
+
+    .card-hover { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.1); }
+    .popular-card-hover { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .popular-card-hover:hover { transform: scale(1.03) translateY(-4px); }
+
+    .compare-row:hover { background: rgba(37,99,235,0.04); }
+
+    .toggle-pill { background: #e2e8f0; border-radius: 999px; padding: 4px; display: inline-flex; }
+    .toggle-option {
+      padding: 6px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .toggle-option.active { background: #2563eb; color: white; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
+    .toggle-option:not(.active) { color: #64748b; }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar-glass fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+        <i data-lucide="server" class="w-4 h-4 text-white"></i>
+      </div>
+      <span class="text-xl font-heading font-800 text-gray-900">Nexa<span class="text-primary">Host</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+      <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+      <a href="pricing.html" class="text-primary font-semibold">Harga</a>
+      <a href="support.html" class="hover:text-primary transition-colors">Support</a>
+    </div>
+    <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20mau%20tanya%20paket%20hosting"
+       target="_blank"
+       class="wa-btn text-white text-sm font-semibold px-4 py-2 rounded-xl flex items-center gap-2">
+      <i data-lucide="message-circle" class="w-4 h-4"></i>
+      <span class="hidden sm:inline">WhatsApp</span>
+    </a>
+    <button onclick="toggleMobile()" class="md:hidden text-gray-600">
+      <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden px-5 pb-4 flex flex-col gap-3 text-sm font-medium text-gray-700 border-t border-gray-100">
+    <a href="index.html" class="hover:text-primary py-1">Home</a>
+    <a href="pricing.html" class="text-primary font-semibold py-1">Harga</a>
+    <a href="support.html" class="hover:text-primary py-1">Support</a>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header pt-32 pb-16 px-5 text-center">
+  <div class="max-w-2xl mx-auto" data-aos="fade-up">
+    <div class="inline-flex items-center gap-2 bg-primaryLight text-primary text-xs font-semibold px-4 py-2 rounded-full mb-5">
+      <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+      Harga Transparan · Tanpa Biaya Tersembunyi
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-heading font-extrabold text-gray-900 mb-4 leading-tight">
+      Paket Hosting<br/>untuk Semua Kebutuhan
+    </h1>
+    <p class="text-gray-500 text-base max-w-md mx-auto">
+      Mulai dari website personal hingga e-commerce besar, kami punya paketnya.
+    </p>
+  </div>
+
+  <!-- Billing Toggle -->
+  <div class="mt-8 flex justify-center" data-aos="fade-up" data-aos-delay="100">
+    <div class="toggle-pill">
+      <span class="toggle-option active" id="btnMonthly" onclick="setBilling('monthly')">Bulanan</span>
+      <span class="toggle-option" id="btnYearly" onclick="setBilling('yearly')">Tahunan <span class="text-xs text-accent font-bold">Hemat 20%</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING CARDS ===== -->
+<section class="py-16 px-5 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+      <!-- Starter -->
+      <div class="bg-surface p-7 rounded-3xl border border-gray-100 shadow-sm card-hover flex flex-col" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+            <i data-lucide="seedling" class="w-5 h-5 text-gray-600"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-gray-900">Starter</h3>
+            <p class="text-xs text-gray-400">Cocok untuk pemula</p>
+          </div>
+        </div>
+        <div class="mb-6">
+          <span class="text-3xl font-heading font-extrabold text-gray-900" id="price-starter">Rp15rb</span>
+          <span class="text-gray-400 text-sm" id="period-starter">/bulan</span>
+          <p class="text-xs text-gray-400 mt-1" id="save-starter"></p>
+        </div>
+        <ul class="space-y-2.5 text-sm text-gray-600 mb-8 flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>512 MB SSD Storage</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>1 Domain</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>3 Email Akun</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>SSL Gratis</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>99.9% Uptime</li>
+          <li class="flex items-center gap-2 text-gray-300"><i data-lucide="x" class="w-4 h-4 flex-shrink-0"></i>WordPress Installer</li>
+          <li class="flex items-center gap-2 text-gray-300"><i data-lucide="x" class="w-4 h-4 flex-shrink-0"></i>Backup Harian</li>
+        </ul>
+        <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20mau%20order%20Paket%20Starter"
+           target="_blank"
+           class="block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-3 rounded-xl transition-all text-sm">
+          Order Sekarang
+        </a>
+      </div>
+
+      <!-- Basic -->
+      <div class="bg-surface p-7 rounded-3xl border border-gray-100 shadow-sm card-hover flex flex-col" data-aos="fade-up" data-aos-delay="80">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
+            <i data-lucide="box" class="w-5 h-5 text-primary"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-gray-900">Basic</h3>
+            <p class="text-xs text-gray-400">Website & Blog</p>
+          </div>
+        </div>
+        <div class="mb-6">
+          <span class="text-3xl font-heading font-extrabold text-gray-900" id="price-basic">Rp25rb</span>
+          <span class="text-gray-400 text-sm" id="period-basic">/bulan</span>
+          <p class="text-xs text-gray-400 mt-1" id="save-basic"></p>
+        </div>
+        <ul class="space-y-2.5 text-sm text-gray-600 mb-8 flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>1 GB SSD Storage</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>1 Domain</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>5 Email Akun</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>SSL Gratis</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>cPanel Akses</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>WordPress Installer</li>
+          <li class="flex items-center gap-2 text-gray-300"><i data-lucide="x" class="w-4 h-4 flex-shrink-0"></i>Backup Harian</li>
+        </ul>
+        <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20mau%20order%20Paket%20Basic"
+           target="_blank"
+           class="block text-center bg-primaryLight hover:bg-blue-200 text-primary font-semibold py-3 rounded-xl transition-all text-sm">
+          Order Sekarang
+        </a>
+      </div>
+
+      <!-- Pro - MOST POPULAR -->
+      <div class="bg-primary p-7 rounded-3xl popular-glow popular-card-hover flex flex-col relative" data-aos="fade-up" data-aos-delay="160">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+          <span class="bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">⭐ Most Popular</span>
+        </div>
+        <div class="flex items-center gap-3 mb-6 mt-2">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+            <i data-lucide="rocket" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-white">Pro</h3>
+            <p class="text-xs text-blue-200">Bisnis & Toko Online</p>
+          </div>
+        </div>
+        <div class="mb-6">
+          <span class="text-3xl font-heading font-extrabold text-white" id="price-pro">Rp55rb</span>
+          <span class="text-blue-200 text-sm" id="period-pro">/bulan</span>
+          <p class="text-xs text-blue-300 mt-1" id="save-pro"></p>
+        </div>
+        <ul class="space-y-2.5 text-sm text-blue-100 mb-8 flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>5 GB SSD Storage</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>3 Domain</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>20 Email Akun</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>SSL + Backup Harian</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>WordPress 1-Click</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>cPanel + Softaculous</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0"></i>Prioritas Support</li>
+        </ul>
+        <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20mau%20order%20Paket%20Pro"
+           target="_blank"
+           class="block text-center bg-white text-primary font-semibold py-3 rounded-xl hover:bg-blue-50 transition-all text-sm shadow-lg">
+          Order Sekarang
+        </a>
+      </div>
+
+      <!-- Unlimited -->
+      <div class="bg-surface p-7 rounded-3xl border border-gray-100 shadow-sm card-hover flex flex-col" data-aos="fade-up" data-aos-delay="240">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center">
+            <i data-lucide="infinity" class="w-5 h-5 text-accent"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-gray-900">Unlimited</h3>
+            <p class="text-xs text-gray-400">Enterprise & Agency</p>
+          </div>
+        </div>
+        <div class="mb-6">
+          <span class="text-3xl font-heading font-extrabold text-gray-900" id="price-unlimited">Rp95rb</span>
+          <span class="text-gray-400 text-sm" id="period-unlimited">/bulan</span>
+          <p class="text-xs text-gray-400 mt-1" id="save-unlimited"></p>
+        </div>
+        <ul class="space-y-2.5 text-sm text-gray-600 mb-8 flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>Storage Unlimited</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>Domain Unlimited</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>Email Unlimited</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>SSL + Backup Real-time</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>Dedicated IP</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>Free Domain .com/id</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>VIP Support Line</li>
+        </ul>
+        <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20mau%20order%20Paket%20Unlimited"
+           target="_blank"
+           class="block text-center bg-primary text-white font-semibold py-3 rounded-xl hover:bg-primaryDark transition-all text-sm shadow-md shadow-blue-200">
+          Order Sekarang
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON TABLE ===== -->
+<section class="py-16 px-5 bg-surface">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-10" data-aos="fade-up">
+      <h2 class="text-2xl font-heading font-bold text-gray-900">Perbandingan Fitur</h2>
+      <p class="text-gray-500 text-sm mt-2">Detail lengkap semua paket dalam satu tabel</p>
+    </div>
+
+    <div class="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm" data-aos="fade-up" data-aos-delay="100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-100">
+            <th class="text-left px-6 py-4 font-heading font-bold text-gray-700 w-1/3">Fitur</th>
+            <th class="text-center px-4 py-4 font-heading font-bold text-gray-500">Starter</th>
+            <th class="text-center px-4 py-4 font-heading font-bold text-gray-500">Basic</th>
+            <th class="text-center px-4 py-4 font-heading font-bold text-primary bg-blue-50">Pro ⭐</th>
+            <th class="text-center px-4 py-4 font-heading font-bold text-gray-500">Unlimited</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">Storage SSD</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">512 MB</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">1 GB</td>
+            <td class="text-center px-4 py-3.5 text-primary font-semibold bg-blue-50/50">5 GB</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">Unlimited</td>
+          </tr>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">Domain</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">1</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">1</td>
+            <td class="text-center px-4 py-3.5 text-primary font-semibold bg-blue-50/50">3</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">Unlimited</td>
+          </tr>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">Email Akun</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">3</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">5</td>
+            <td class="text-center px-4 py-3.5 text-primary font-semibold bg-blue-50/50">20</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">Unlimited</td>
+          </tr>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">SSL Gratis</td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5 bg-blue-50/50"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+          </tr>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">Backup Harian</td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="x" class="w-4 h-4 text-gray-300 mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="x" class="w-4 h-4 text-gray-300 mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5 bg-blue-50/50"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+          </tr>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">WordPress 1-Click</td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="x" class="w-4 h-4 text-gray-300 mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5 bg-blue-50/50"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+          </tr>
+          <tr class="border-b border-gray-50 compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">Dedicated IP</td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="x" class="w-4 h-4 text-gray-300 mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="x" class="w-4 h-4 text-gray-300 mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5 bg-blue-50/50"><i data-lucide="x" class="w-4 h-4 text-gray-300 mx-auto"></i></td>
+            <td class="text-center px-4 py-3.5"><i data-lucide="check" class="w-4 h-4 text-accent mx-auto"></i></td>
+          </tr>
+          <tr class="compare-row transition-colors">
+            <td class="px-6 py-3.5 text-gray-700 font-medium">Level Support</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">Standard</td>
+            <td class="text-center px-4 py-3.5 text-gray-500">Standard</td>
+            <td class="text-center px-4 py-3.5 text-primary font-semibold bg-blue-50/50">Prioritas</td>
+            <td class="text-center px-4 py-3.5 text-accent font-semibold">VIP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ MINI ===== -->
+<section class="py-16 px-5 bg-white">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10" data-aos="fade-up">
+      <h2 class="text-2xl font-heading font-bold text-gray-900">Ada pertanyaan?</h2>
+      <p class="text-gray-500 text-sm mt-2">Lihat halaman <a href="support.html" class="text-primary font-semibold hover:underline">Support & FAQ</a> kami atau hubungi langsung.</p>
+    </div>
+    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+      <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20mau%20tanya%20tentang%20paket%20hosting"
+         target="_blank"
+         class="wa-btn inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-2xl text-sm shadow-lg shadow-green-200">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Konsultasi Gratis via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="py-20 px-5 cta-gradient noise">
+  <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white mb-4">Bingung pilih paket?</h2>
+    <p class="text-blue-200 mb-8">Konsultasi gratis dengan tim kami, kami bantu sesuaikan dengan kebutuhanmu.</p>
+    <a href="https://wa.me/6281234567890?text=Halo%20NexaHost%2C%20saya%20butuh%20bantuan%20memilih%20paket%20hosting"
+       target="_blank"
+       class="wa-btn inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-2xl text-sm">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chat Admin Sekarang
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-bg py-14 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid sm:grid-cols-4 gap-10 pb-10 border-b border-gray-200">
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <i data-lucide="server" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="text-xl font-heading font-bold text-gray-900">Nexa<span class="text-primary">Host</span></span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+          Solusi hosting terbaik untuk website pribadi, bisnis, dan toko online kamu.
+        </p>
+        <a href="https://wa.me/6281234567890" target="_blank"
+           class="inline-flex items-center gap-2 mt-5 text-accent font-semibold text-sm hover:underline">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          +62 812-3456-7890
+        </a>
+      </div>
+      <div>
+        <p class="font-heading font-bold text-gray-900 mb-4 text-sm">Navigasi</p>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+          <li><a href="pricing.html" class="hover:text-primary transition-colors">Harga Paket</a></li>
+          <li><a href="support.html" class="hover:text-primary transition-colors">Support & FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-heading font-bold text-gray-900 mb-4 text-sm">Kontak</p>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5"></i> support@nexahost.id</li>
+          <li class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 24/7 Support</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Indonesia</li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center text-gray-400 text-xs mt-8">© 2026 NexaHost · Project by fahmiwirp.my.id</p>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  AOS.init({ duration: 600, once: true, offset: 60 });
+
+  function toggleMobile() {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  }
+
+  const prices = {
+    monthly: { starter: 'Rp15rb', basic: 'Rp25rb', pro: 'Rp55rb', unlimited: 'Rp95rb' },
+    yearly:  { starter: 'Rp144rb', basic: 'Rp240rb', pro: 'Rp528rb', unlimited: 'Rp912rb' }
+  };
+  const saves = {
+    monthly: { starter: '', basic: '', pro: '', unlimited: '' },
+    yearly:  { starter: 'Hemat Rp36rb/thn', basic: 'Hemat Rp60rb/thn', pro: 'Hemat Rp132rb/thn', unlimited: 'Hemat Rp228rb/thn' }
+  };
+  const periods = { monthly: '/bulan', yearly: '/tahun' };
+
+  function setBilling(mode) {
+    ['starter','basic','pro','unlimited'].forEach(p => {
+      document.getElementById('price-'+p).textContent = prices[mode][p];
+      document.getElementById('period-'+p).textContent = periods[mode];
+      document.getElementById('save-'+p).textContent = saves[mode][p];
+    });
+    document.getElementById('btnMonthly').classList.toggle('active', mode === 'monthly');
+    document.getElementById('btnYearly').classList.toggle('active', mode === 'yearly');
+  }
+</script>
+</body>
+</html>
