@@ -123,6 +123,202 @@
     .testi-card { transition: all 0.25s; }
     .testi-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
   </style>
+  <!-- ===== DARK MODE STYLES ===== -->
+  <style>
+    /* === TRANSITION SMOOTH === */
+    body, body * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+    }
+    /* No transition on transform/shadow elements */
+    body * { transition-property: background-color, border-color, color; }
+
+    /* === BASE === */
+    body.dark { background: #0f172a !important; color: #e2e8f0; }
+
+    /* === NAVBAR === */
+    body.dark .navbar-glass {
+      background: rgba(8,12,26,0.95) !important;
+      border-bottom-color: rgba(255,255,255,0.06) !important;
+    }
+
+    /* === SECTIONS === */
+    body.dark section.bg-white,
+    body.dark .bg-white { background: #1e293b !important; }
+    body.dark .bg-surface { background: #0f172a !important; }
+    body.dark .hero-bg {
+      background: linear-gradient(135deg, #0c1628 0%, #0f172a 40%, #0a1c0c 100%) !important;
+    }
+    body.dark .hero-bg::before {
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%) !important;
+    }
+    body.dark .hero-bg::after {
+      background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%) !important;
+    }
+    body.dark .page-header {
+      background: linear-gradient(135deg, #0c1628 0%, #0f172a 50%, #0a1c0c 100%) !important;
+    }
+    body.dark .footer-bg {
+      background: linear-gradient(180deg, #090e1c 0%, #060a14 100%) !important;
+    }
+    body.dark .glass-card {
+      background: rgba(30,41,59,0.9) !important;
+      border-color: rgba(255,255,255,0.08) !important;
+    }
+
+    /* === CARD ELEMENTS === */
+    body.dark .rounded-3xl.bg-white { background: #1e293b !important; }
+    body.dark .rounded-3xl.bg-surface { background: #1e293b !important; }
+    body.dark .rounded-3xl.border { background: #1e293b !important; }
+
+    /* === COLOR OVERRIDES === */
+    body.dark .text-gray-900 { color: #f1f5f9 !important; }
+    body.dark .text-gray-800 { color: #e2e8f0 !important; }
+    body.dark .text-gray-700 { color: #cbd5e1 !important; }
+    body.dark .text-gray-600 { color: #94a3b8 !important; }
+    body.dark .text-gray-500 { color: #64748b !important; }
+    body.dark .text-gray-400 { color: #475569 !important; }
+
+    /* === BORDERS === */
+    body.dark .border-gray-100 { border-color: rgba(255,255,255,0.06) !important; }
+    body.dark .border-gray-200 { border-color: rgba(255,255,255,0.08) !important; }
+
+    /* === LIGHT COLORED BGs === */
+    body.dark .bg-blue-50 { background: rgba(37,99,235,0.12) !important; }
+    body.dark .bg-blue-100 { background: rgba(37,99,235,0.18) !important; }
+    body.dark .bg-green-50 { background: rgba(34,197,94,0.12) !important; }
+    body.dark .bg-green-100 { background: rgba(34,197,94,0.15) !important; }
+    body.dark .bg-purple-50 { background: rgba(168,85,247,0.12) !important; }
+    body.dark .bg-amber-50 { background: rgba(245,158,11,0.1) !important; }
+    body.dark .bg-amber-100 { background: rgba(245,158,11,0.15) !important; }
+    body.dark .bg-indigo-50 { background: rgba(99,102,241,0.12) !important; }
+    body.dark .bg-gray-50 { background: rgba(255,255,255,0.04) !important; }
+    body.dark .bg-gray-100 { background: rgba(255,255,255,0.07) !important; }
+    body.dark .bg-primaryLight { background: rgba(37,99,235,0.2) !important; }
+
+    /* === HOVER STATES === */
+    body.dark .hover\:bg-gray-200:hover { background: rgba(255,255,255,0.1) !important; }
+    body.dark .hover\:bg-blue-200:hover { background: rgba(37,99,235,0.25) !important; }
+
+    /* === FAQ === */
+    body.dark .faq-item { border-bottom-color: rgba(255,255,255,0.06) !important; }
+    body.dark .faq-btn:hover { background: rgba(255,255,255,0.04) !important; }
+    body.dark .faq-body-inner { color: #94a3b8 !important; }
+
+    /* === TABS & TOGGLES === */
+    body.dark .toggle-pill { background: #1e293b !important; }
+    body.dark .toggle-option:not(.active) { color: #94a3b8 !important; }
+    body.dark .tab-btn:not(.active) {
+      background: #1e293b !important;
+      border-color: rgba(255,255,255,0.1) !important;
+      color: #94a3b8 !important;
+    }
+
+    /* === TABLE === */
+    body.dark table { background: #1e293b !important; }
+    body.dark thead { background: rgba(255,255,255,0.04) !important; }
+    body.dark .compare-row:hover { background: rgba(255,255,255,0.04) !important; }
+    body.dark td, body.dark th { border-color: rgba(255,255,255,0.04) !important; }
+
+    /* === INPUT === */
+    body.dark input[type="text"] { color: #e2e8f0 !important; }
+    body.dark input::placeholder { color: #475569 !important; }
+    body.dark .border.border-gray-200 { border-color: rgba(255,255,255,0.1) !important; background: #1e293b !important; }
+
+    /* === SHIMMER === */
+    body.dark .shimmer::after {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent) !important;
+    }
+
+    /* === DARK TOGGLE BUTTON - FLOATING === */
+    #darkToggleFloat {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      color: white;
+      box-shadow: 0 8px 28px rgba(37,99,235,0.45), 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, background 0.3s ease !important;
+    }
+    #darkToggleFloat:hover {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 14px 36px rgba(37,99,235,0.55), 0 4px 12px rgba(0,0,0,0.2);
+    }
+    #darkToggleFloat:active { transform: scale(0.93); }
+
+    body.dark #darkToggleFloat {
+      background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+      color: #fbbf24 !important;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 20px rgba(251,191,36,0.15), inset 0 0 0 1px rgba(255,255,255,0.1) !important;
+    }
+    body.dark #darkToggleFloat:hover {
+      box-shadow: 0 14px 36px rgba(0,0,0,0.6), 0 0 28px rgba(251,191,36,0.25), inset 0 0 0 1px rgba(255,255,255,0.15) !important;
+    }
+
+    /* Tooltip */
+    #darkToggleFloat::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: #1e293b;
+      color: #e2e8f0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    body.dark #darkToggleFloat::before { background: #334155; }
+    #darkToggleFloat:hover::before { opacity: 1; }
+
+    /* Spin animation for icon switch */
+    @keyframes iconSpin {
+      0% { transform: rotate(-90deg) scale(0.5); opacity: 0; }
+      100% { transform: rotate(0deg) scale(1); opacity: 1; }
+    }
+    .icon-animate { animation: iconSpin 0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+    /* Navbar dark toggle btn */
+    #navDarkBtn {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      border: 1.5px solid rgba(37,99,235,0.15);
+      background: rgba(37,99,235,0.06);
+      color: #2563eb;
+      transition: all 0.2s ease !important;
+    }
+    #navDarkBtn:hover {
+      background: rgba(37,99,235,0.12);
+      border-color: rgba(37,99,235,0.3);
+      transform: scale(1.08);
+    }
+    body.dark #navDarkBtn {
+      background: rgba(251,191,36,0.1) !important;
+      border-color: rgba(251,191,36,0.2) !important;
+      color: #fbbf24 !important;
+    }
+    body.dark #navDarkBtn:hover {
+      background: rgba(251,191,36,0.18) !important;
+      border-color: rgba(251,191,36,0.35) !important;
+    }
+  </style>
+
 </head>
 <body class="antialiased">
 
@@ -139,7 +335,10 @@
       <a href="index.html" class="hover:text-primary transition-colors">Home</a>
       <a href="pricing.html" class="hover:text-primary transition-colors">Harga</a>
       <a href="support.html" class="text-primary font-semibold">Support</a>
-    </div>
+<button id="navDarkBtn" onclick="toggleDark()" title="Toggle Tema">
+      <span id="navIconWrap"><i data-lucide="moon" class="w-4 h-4"></i></span>
+    </button>
+        </div>
     <a href="https://wa.me/6285380231403?text=Halo%20rhmnetHost%2C%20saya%20butuh%20bantuan"
        target="_blank"
        class="wa-btn text-white text-sm font-semibold px-4 py-2 rounded-xl flex items-center gap-2">
@@ -636,5 +835,57 @@
     if (query === '') items.forEach(item => item.style.display = '');
   }
 </script>
+
+<!-- ===== DARK MODE FLOAT BUTTON ===== -->
+<button id="darkToggleFloat" onclick="toggleDark()" data-tooltip="Mode Gelap" aria-label="Toggle dark mode">
+  <span id="floatIconWrap"><i data-lucide="moon" class="w-5 h-5"></i></span>
+</button>
+  <!-- ===== DARK MODE JS ===== -->
+  <script>
+    const DARK_KEY = 'rhmnet-dark';
+
+    function applyDark(dark) {
+      document.body.classList.toggle('dark', dark);
+
+      const floatBtn = document.getElementById('darkToggleFloat');
+      const navBtn = document.getElementById('navDarkBtn');
+      const floatIconEl = document.getElementById('floatIconWrap');
+      const navIconEl = document.getElementById('navIconWrap');
+
+      if (floatBtn) {
+        floatBtn.setAttribute('data-tooltip', dark ? 'Mode Terang' : 'Mode Gelap');
+        if (floatIconEl) {
+          floatIconEl.innerHTML = dark
+            ? '<i data-lucide="sun" class="w-5 h-5"></i>'
+            : '<i data-lucide="moon" class="w-5 h-5"></i>';
+          floatIconEl.classList.add('icon-animate');
+          setTimeout(() => floatIconEl.classList.remove('icon-animate'), 400);
+        }
+      }
+      if (navBtn && navIconEl) {
+        navIconEl.innerHTML = dark
+          ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+          : '<i data-lucide="moon" class="w-4 h-4"></i>';
+        navIconEl.classList.add('icon-animate');
+        setTimeout(() => navIconEl.classList.remove('icon-animate'), 400);
+      }
+      lucide.createIcons();
+    }
+
+    function toggleDark() {
+      const isDark = !document.body.classList.contains('dark');
+      localStorage.setItem(DARK_KEY, isDark ? '1' : '0');
+      applyDark(isDark);
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const saved = localStorage.getItem(DARK_KEY);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const shouldBeDark = saved !== null ? saved === '1' : prefersDark;
+      applyDark(shouldBeDark);
+    });
+  </script>
+
 </body>
 </html>
